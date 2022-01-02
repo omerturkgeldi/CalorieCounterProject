@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CalorieCounterProject.API.DTOs;
+using CalorieCounterProject.Core.DTOs;
 using CalorieCounterProject.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -21,8 +21,31 @@ namespace CalorieCounterProject.API.Mapping
 
             CreateMap<Activity, ActivityDto>();
             CreateMap<ActivityDto, Activity>();
-        }
 
+            CreateMap<DailyProductIntake, DailyProductIntakeDto>();
+            CreateMap<DailyProductIntakeDto, DailyProductIntake>();
+
+            CreateMap<DailyFoodIntake, DailyFoodIntakeDto>();
+            CreateMap<DailyFoodIntakeDto, DailyFoodIntake>();
+
+            CreateMap<DailyActivity, DailyActivityDto>();
+            CreateMap<DailyActivityDto, DailyActivity>();
+
+            CreateMap<DailySteps, DailyStepsDto>();
+            CreateMap<DailyStepsDto, DailySteps>();
+
+            CreateMap<Group, GroupDto>();
+            CreateMap<GroupDto, Group>();
+
+            CreateMap<UserGroup, UserGroupDto>();
+            CreateMap<UserGroupDto, UserGroup>();
+
+            CreateMap<RelationshipType, RelationshipTypeDto>();
+            CreateMap<RelationshipTypeDto, RelationshipType>();
+
+            CreateMap<Relationship, RelationshipDto>();
+            CreateMap<RelationshipDto, Relationship>();
+        }
 
     }
 }

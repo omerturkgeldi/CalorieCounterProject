@@ -21,5 +21,16 @@ namespace CalorieCounterProject.Service.Services
             return await _unitOfWork.Foods.GetByNameAsync(foodName);
 
         }
+
+        // ????
+        new public async Task<Food> AddAsync(Food food)
+        {
+            //food.UrlName = 
+            food.RegisterDate = DateTime.UtcNow;
+            await _repository.AddAsync(food);
+            await _unitOfWork.CommitAsync();
+            return food;
+        }
+
     }
 }

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CalorieCounterProject.API.DTOs;
+using CalorieCounterProject.Core.DTOs;
 using CalorieCounterProject.API.Filters;
 using CalorieCounterProject.Core.Models;
 using CalorieCounterProject.Core.Services;
@@ -57,7 +57,6 @@ namespace CalorieCounterProject.API.Controllers
         public async Task<IActionResult> Save(FoodDto foodDto)
         {
             var newFood = await _foodService.AddAsync(_mapper.Map<Food>(foodDto));
-            newFood.RegisterDate = DateTime.UtcNow;
             return Created(string.Empty, _mapper.Map<FoodDto>(newFood));
         }
 

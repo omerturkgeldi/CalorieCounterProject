@@ -4,14 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CalorieCounterProject.API.DTOs
+namespace CalorieCounterProject.Core.DTOs
 {
-    public class FoodDto
+    public class ProductDto
     {
-        public int FoodId { get; set; }
+        public int ProductId { get; set; }
 
         [Required(ErrorMessage = "{0} alanı gereklidir")]
-        public string FoodName { get; set; }
+        public string BarcodeNo { get; set; }
+
+        [Required(ErrorMessage = "{0} alanı gereklidir")]
+        public string ProductName { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "{0} alanı 0'dan büyük bir değer olmalıdır.")]
         public int Kcal { get; set; }

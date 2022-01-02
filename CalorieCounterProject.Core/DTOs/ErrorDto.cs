@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CalorieCounterProject.API.DTOs
+namespace CalorieCounterProject.Core.DTOs
 {
     public class ErrorDto
     {
@@ -14,6 +14,5 @@ namespace CalorieCounterProject.API.DTOs
 
         public List<String> Errors { get; set; }
         public int Status { get; set; }
-
     }
 }

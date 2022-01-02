@@ -15,7 +15,7 @@ namespace CalorieCounterProject.Data.Configurations
         {
             builder.HasKey(x => x.ActivityId);
             builder.Property(x => x.ActivityId).UseIdentityColumn();
-            builder.Property(x => x.ActivityName).IsRequired();
+            builder.Property(x => x.Name).IsRequired();
 
             builder.ToTable("Activities");
 

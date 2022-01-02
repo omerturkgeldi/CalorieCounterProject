@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace CalorieCounterProject.Data.Configurations
 {
-    class FoodConfiguration : IEntityTypeConfiguration<Food>
+    public class FoodConfiguration : IEntityTypeConfiguration<Food>
     {
         public void Configure(EntityTypeBuilder<Food> builder)
         {
             builder.HasKey(x => x.FoodId);
             builder.Property(x => x.FoodId).UseIdentityColumn();
+            //builder.HasIndex(x => x.UrlName).IsUnique();
             builder.Property(x => x.FoodName).IsRequired();
             builder.Property(x => x.Kcal).IsRequired();
 

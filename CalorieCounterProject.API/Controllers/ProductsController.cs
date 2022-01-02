@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CalorieCounterProject.API.DTOs;
+using CalorieCounterProject.Core.DTOs;
 using CalorieCounterProject.API.Filters;
 using CalorieCounterProject.Core.Models;
 using CalorieCounterProject.Core.Services;

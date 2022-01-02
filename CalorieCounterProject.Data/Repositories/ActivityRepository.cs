@@ -1,5 +1,6 @@
 ﻿using CalorieCounterProject.Core.Models;
 using CalorieCounterProject.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace CalorieCounterProject.Data.Repositories
 
         public ActivityRepository(AppDbContext context) : base(context)
         {
+        }
+
+        public async Task<Activity> GetByNameAsync(string activityName)
+        {
+            return await _appDbContext.Activities.Where(x => x.Name == activityName).FirstOrDefaultAsync();
         }
 
     }

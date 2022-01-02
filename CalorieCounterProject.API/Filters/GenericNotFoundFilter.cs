@@ -1,4 +1,5 @@
-﻿using CalorieCounterProject.API.DTOs;
+﻿using CalorieCounterProject.Core.DTOs;
+using CalorieCounterProject.Core.DTOs;
 using CalorieCounterProject.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;

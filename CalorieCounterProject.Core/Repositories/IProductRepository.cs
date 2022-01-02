@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CalorieCounterProject.Core.Repositories
 {
-    public interface IProductRepository
+    public interface IProductRepository : IRepository<Product>
     {
         Task<Product> GetByNameAsync(string productName);
     }

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CalorieCounterProject.API.DTOs;
+using CalorieCounterProject.Core.DTOs;
 using CalorieCounterProject.API.Filters;
 using CalorieCounterProject.Core.Models;
 using CalorieCounterProject.Core.Services;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CalorieCounterProject.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ActivitiesController : ControllerBase
     {
@@ -49,6 +49,16 @@ namespace CalorieCounterProject.API.Controllers
             var newActivity = await _activityService.AddAsync(_mapper.Map<Activity>(activityDto));
             return Created(string.Empty, _mapper.Map<ActivityDto>(newActivity));
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SaveAll(List<ActivityDto> activityDtos)
+        {
+            var newActivity = await _activityService.AddRangeAsync(_mapper.Map<IEnumerable<Activity>>(activityDtos));
+            return Created(string.Empty, _mapper.Map<ActivityDto>(newActivity));
+        }
+
+
 
         [HttpPut]
         public IActionResult Update(ActivityDto activityDto)

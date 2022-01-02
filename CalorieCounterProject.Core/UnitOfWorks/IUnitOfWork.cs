@@ -12,6 +12,7 @@ namespace CalorieCounterProject.Core.UnitOfWorks
         IFoodRepository Foods { get; }
         IProductRepository Products { get; }
         IActivityRepository Activities { get; }
+        IRelationshipRepository Relationships { get; }
 
         Task CommitAsync();
         void Commit();

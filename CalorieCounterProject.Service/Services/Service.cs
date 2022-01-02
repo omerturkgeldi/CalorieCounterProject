@@ -1,6 +1,7 @@
 ﻿using CalorieCounterProject.Core.Repositories;
 using CalorieCounterProject.Core.Services;
 using CalorieCounterProject.Core.UnitOfWorks;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace CalorieCounterProject.Service.Services
     public class Service<TEntity> : IService<TEntity> where TEntity : class
     {
         public readonly IUnitOfWork _unitOfWork;
-        private readonly IRepository<TEntity> _repository;
+        public readonly IRepository<TEntity> _repository;
 
         public Service(IUnitOfWork unitOfWork, IRepository<TEntity> repository)
         {
@@ -71,7 +72,7 @@ namespace CalorieCounterProject.Service.Services
 
         public async Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate)
         {
-            return await _repository.Where(predicate);
+            return await _repository.Where(predicate).ToListAsync();
         }
     }
 }
