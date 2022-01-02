@@ -1,4 +1,5 @@
-﻿using CalorieCounterProject.Core.Models;
+﻿using CalorieCounterProject.Core.DTOs;
+using CalorieCounterProject.Core.Models;
 using CalorieCounterProject.Core.Repositories;
 using CalorieCounterProject.Core.Services;
 using CalorieCounterProject.Core.UnitOfWorks;
@@ -17,5 +18,9 @@ namespace CalorieCounterProject.Service.Services
         {
         }
 
+        public async Task<List<DailyProductIntakeWithProductInfoDto>> GetCertainDate(DateTime dateTime)
+        {
+            return await _unitOfWork.DailyProductIntakes.GetCertainDate(dateTime);
+        }
     }
 }

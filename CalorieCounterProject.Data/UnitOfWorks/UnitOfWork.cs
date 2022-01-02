@@ -16,6 +16,7 @@ namespace CalorieCounterProject.Data.UnitOfWorks
         private ProductRepository _productRepository;
         private ActivityRepository _activityRepository;
         private RelationshipRepository _relationshipRepository;
+        private DailyProductIntakeRepository _dailyProductIntakeRepository;
 
         public IFoodRepository Foods => _foodRepository = _foodRepository ?? new FoodRepository(_context);
 
@@ -25,6 +26,7 @@ namespace CalorieCounterProject.Data.UnitOfWorks
 
         public IRelationshipRepository Relationships => _relationshipRepository = _relationshipRepository ?? new RelationshipRepository(_context);
 
+        public IDailyProductIntakeRepository DailyProductIntakes => _dailyProductIntakeRepository = _dailyProductIntakeRepository ?? new DailyProductIntakeRepository(_context);
 
 
         public UnitOfWork(AppDbContext appDbContext)

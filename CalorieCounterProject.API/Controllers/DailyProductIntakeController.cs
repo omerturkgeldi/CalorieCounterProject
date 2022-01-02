@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace CalorieCounterProject.API.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class DailyProductIntakeController : ControllerBase
     {
@@ -35,6 +35,16 @@ namespace CalorieCounterProject.API.Controllers
             var dailyProductIntakes = await _dailyProductIntakeService.GetAllAsync();
             return Ok(_mapper.Map<IEnumerable<DailyProductIntakeDto>>(dailyProductIntakes));
         }
+
+        [HttpPost]
+        public async Task<IActionResult> GetCertainDate(DateTimeDto dateTimeDto)
+        {
+            var certainDateProductIntakes = await _dailyProductIntakeService.GetCertainDate(dateTimeDto.DateTime.Date);
+            return Ok(_mapper.Map<IEnumerable<DailyProductIntakeWithProductInfoDto>>(certainDateProductIntakes));
+        }
+
+
+
 
 
         //[ServiceFilter(typeof(FoodNotFoundFilter))]

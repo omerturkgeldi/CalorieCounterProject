@@ -12,6 +12,7 @@ namespace CalorieCounterProject.Core.Models
         public int ProductId { get; set; }
         public Guid UserId { get; set; }
         public float PortionSize { get; set; }
+        public TypeOfIntake IntakeType { get; set; }
         public DateTime Date { get; set; }
 
     }

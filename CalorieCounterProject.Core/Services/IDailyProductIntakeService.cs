@@ -1,4 +1,5 @@
-﻿using CalorieCounterProject.Core.Models;
+﻿using CalorieCounterProject.Core.DTOs;
+using CalorieCounterProject.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace CalorieCounterProject.Core.Services
 {
     public interface IDailyProductIntakeService : IService<DailyProductIntake>
     {
+        Task<List<DailyProductIntakeWithProductInfoDto>> GetCertainDate(DateTime dateTime);
+
     }
-    
+
 }
