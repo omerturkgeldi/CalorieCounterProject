@@ -21,14 +21,14 @@ namespace CalorieCounterProject.Data.Repositories
         public async Task<List<DailyProductIntakeWithProductInfoDto>> GetCertainDate(DateTime dateTime)
         {
 
-            var queryy = await (from dpi in _appDbContext.DailyProductIntakes
+            var productsInfo = await (from dpi in _appDbContext.DailyProductIntakes
                                 join prd in _appDbContext.Products on dpi.ProductId equals prd.ProductId
                                 where dpi.Date.Date == dateTime.Date
                                 select new { dpi.Id, dpi.ProductId, dpi.UserId, dpi.PortionSize, dpi.Date, dpi.IntakeType, prd.Kcal, prd.Fat, prd.Protein, prd.BarcodeNo, prd.ProductName, prd.Carb }).ToListAsync();
 
-            List<DailyProductIntakeWithProductInfoDto> mylist = new List<DailyProductIntakeWithProductInfoDto>();
+            List<DailyProductIntakeWithProductInfoDto> productDtoList = new List<DailyProductIntakeWithProductInfoDto>();
 
-            foreach (var item in queryy)
+            foreach (var item in productsInfo)
             {
 
                 DailyProductIntakeWithProductInfoDto dpiwpi = new DailyProductIntakeWithProductInfoDto
@@ -47,10 +47,10 @@ namespace CalorieCounterProject.Data.Repositories
                     Fat = item.Fat
                 };
 
-                mylist.Add(dpiwpi);
+                productDtoList.Add(dpiwpi);
             }
 
-            return mylist;
+            return productDtoList;
 
         }
     }
