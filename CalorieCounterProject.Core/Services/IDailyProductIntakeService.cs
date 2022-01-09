@@ -12,6 +12,7 @@ namespace CalorieCounterProject.Core.Services
     {
         Task<List<DailyProductIntakeWithProductInfoDto>> GetCertainDate(DateTime dateTime);
 
+        Task<List<DailyCalorieIntakeDto>> SearchByUserAndDate(DateAndUserIdDto dateAndUserIdDto);
     }
 
 }

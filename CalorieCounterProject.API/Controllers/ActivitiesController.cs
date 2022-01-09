@@ -34,6 +34,16 @@ namespace CalorieCounterProject.API.Controllers
             return Ok(_mapper.Map<IEnumerable<ActivityDto>>(activities));
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> SearchByActivityName(string name)
+        {
+            var activities = await _activityService.SearchByActivityName(name);
+            return Ok(_mapper.Map<IEnumerable<ActivityDto>>(activities));
+        }
+
+
+
         //[ServiceFilter(typeof(ActivityNotFoundFilter))]
         [ServiceFilter(typeof(GenericNotFoundFilter<Activity>))]
         [HttpGet("{id}")]

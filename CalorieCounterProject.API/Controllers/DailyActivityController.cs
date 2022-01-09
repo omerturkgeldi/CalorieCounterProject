@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 
 namespace CalorieCounterProject.API.Controllers
 {
-    [Authorize]
-    [Route("api/[controller]")]
+    //[Authorize]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class DailyActivityController : ControllerBase
     {
@@ -38,6 +38,13 @@ namespace CalorieCounterProject.API.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> SearchByUserAndDate(DateAndUserIdDto dateAndUserIdDto)
+        {
+            var dailyActivities = await _dailyActivityService.SearchByUserAndDate(dateAndUserIdDto);
+            return Ok(_mapper.Map<IEnumerable<DailyActivityClientDto>>(dailyActivities));
+        }
+
         [ServiceFilter(typeof(GenericNotFoundFilter<DailyActivity>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
@@ -48,9 +55,9 @@ namespace CalorieCounterProject.API.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Save(DailyActivityDto dailyActivityDto)
+        public async Task<IActionResult> Save(DailyActivity dailyActivity)
         {
-            var newDailyActivity = await _dailyActivityService.AddAsync(_mapper.Map<DailyActivity>(dailyActivityDto));
+            var newDailyActivity = await _dailyActivityService.AddNewAsync(_mapper.Map<DailyActivity>(dailyActivity));
             return Created(string.Empty, _mapper.Map<DailyActivityDto>(newDailyActivity));
         }
 

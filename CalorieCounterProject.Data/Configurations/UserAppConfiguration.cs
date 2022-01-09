@@ -14,6 +14,8 @@ namespace CalorieCounterProject.Data.Configurations
         public void Configure(EntityTypeBuilder<UserApp> builder)
         {
             builder.Property(x => x.City).HasMaxLength(50);
+            builder.Property(x => x.Weight).IsRequired();
+            builder.Property(x => x.Gender).IsRequired();
         }
     }
 }

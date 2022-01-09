@@ -15,7 +15,7 @@ namespace CalorieCounterProject.Data.Configurations
         {
             builder.HasKey(x => x.FoodId);
             builder.Property(x => x.FoodId).UseIdentityColumn();
-            //builder.HasIndex(x => x.UrlName).IsUnique();
+            builder.HasIndex(x => x.UrlName).IsUnique();
             builder.Property(x => x.FoodName).IsRequired();
             builder.Property(x => x.Kcal).IsRequired();
 

@@ -12,6 +12,7 @@ namespace CalorieCounterProject.Core.Models
         public string City { get; set; }
         public DateTime RegisterDate { get; set; }
         public DateTime Birthdate { get; set; }
+        public float Weight { get; set; }
         public bool Gender { get; set; }
         public string Goal { get; set; }
         public bool IsDeleted { get; set; }

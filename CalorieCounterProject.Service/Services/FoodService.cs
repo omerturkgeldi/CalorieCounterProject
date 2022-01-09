@@ -1,4 +1,5 @@
-﻿using CalorieCounterProject.Core.Models;
+﻿using CalorieCounterProject.Core.DTOs;
+using CalorieCounterProject.Core.Models;
 using CalorieCounterProject.Core.Repositories;
 using CalorieCounterProject.Core.Services;
 using CalorieCounterProject.Core.UnitOfWorks;
@@ -22,15 +23,20 @@ namespace CalorieCounterProject.Service.Services
 
         }
 
-        // ????
-        new public async Task<Food> AddAsync(Food food)
+        public async Task<List<AllFoodsAndProductsDto>> SearchByName(string name)
         {
-            //food.UrlName = 
-            food.RegisterDate = DateTime.UtcNow;
-            await _repository.AddAsync(food);
-            await _unitOfWork.CommitAsync();
-            return food;
+            return await _unitOfWork.Foods.SearchByName(name);
         }
+
+        // ????
+        //new public async Task<Food> AddAsync(Food food)
+        //{
+        //    //food.UrlName = 
+        //    food.RegisterDate = DateTime.UtcNow;
+        //    await _repository.AddAsync(food);
+        //    await _unitOfWork.CommitAsync();
+        //    return food;
+        //}
 
     }
 }

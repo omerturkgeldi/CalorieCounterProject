@@ -17,6 +17,13 @@ namespace CalorieCounterProject.Data.UnitOfWorks
         private ActivityRepository _activityRepository;
         private RelationshipRepository _relationshipRepository;
         private DailyProductIntakeRepository _dailyProductIntakeRepository;
+        private DailyStepRepository _dailyStepRepository;
+        private DailyActivityRepository _dailyActivityRepository;
+        //private DailyFoodIntakeRepository dailyFoodIntakeRepository;
+        //private DailyActivityRepository dailyActivityRepository;
+        //private GroupRepository groupRepository;
+        //private UserGroupRepository userGroupRepository;
+
 
         public IFoodRepository Foods => _foodRepository = _foodRepository ?? new FoodRepository(_context);
 
@@ -28,6 +35,9 @@ namespace CalorieCounterProject.Data.UnitOfWorks
 
         public IDailyProductIntakeRepository DailyProductIntakes => _dailyProductIntakeRepository = _dailyProductIntakeRepository ?? new DailyProductIntakeRepository(_context);
 
+        public IDailyStepRepository DailySteps => _dailyStepRepository = _dailyStepRepository ?? new DailyStepRepository(_context);
+
+        public IDailyActivityRepository DailyActivities => _dailyActivityRepository = _dailyActivityRepository ?? new DailyActivityRepository(_context);
 
         public UnitOfWork(AppDbContext appDbContext)
         {

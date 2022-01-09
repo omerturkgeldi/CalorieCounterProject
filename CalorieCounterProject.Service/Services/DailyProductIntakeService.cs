@@ -22,5 +22,10 @@ namespace CalorieCounterProject.Service.Services
         {
             return await _unitOfWork.DailyProductIntakes.GetCertainDate(dateTime);
         }
+
+        public async Task<List<DailyCalorieIntakeDto>> SearchByUserAndDate(DateAndUserIdDto dateAndUserIdDto)
+        {
+            return await _unitOfWork.DailyProductIntakes.SearchByUserAndDate(dateAndUserIdDto);
+        }
     }
 }

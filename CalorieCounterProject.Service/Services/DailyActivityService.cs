@@ -1,4 +1,5 @@
-﻿using CalorieCounterProject.Core.Models;
+﻿using CalorieCounterProject.Core.DTOs;
+using CalorieCounterProject.Core.Models;
 using CalorieCounterProject.Core.Repositories;
 using CalorieCounterProject.Core.Services;
 using CalorieCounterProject.Core.UnitOfWorks;
@@ -17,6 +18,19 @@ namespace CalorieCounterProject.Service.Services
         {
         }
 
+        public async Task<DailyActivity> AddNewAsync(DailyActivity dailyActivity)
+        {
+            dailyActivity.Date = DateTime.UtcNow;
+            await _unitOfWork.DailyActivities.AddAsync(dailyActivity);
+            await _unitOfWork.CommitAsync();
+            return dailyActivity;
+
+        }
+
+        public async Task<List<DailyActivityClientDto>> SearchByUserAndDate(DateAndUserIdDto dateAndUserIdDto)
+        {
+            return await _unitOfWork.DailyActivities.SearchByUserAndDate(dateAndUserIdDto);
+        }
     }
 
 }

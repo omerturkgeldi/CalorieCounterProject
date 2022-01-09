@@ -1,4 +1,5 @@
-﻿using CalorieCounterProject.Core.Models;
+﻿using CalorieCounterProject.Core.DTOs;
+using CalorieCounterProject.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace CalorieCounterProject.Core.Services
     public interface IFoodService : IService<Food>
     {
         Task<Food> GetByNameAsync(string foodName);
+        Task<List<AllFoodsAndProductsDto>> SearchByName(string name);
     }
 }

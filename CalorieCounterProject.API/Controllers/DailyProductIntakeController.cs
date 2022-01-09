@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CalorieCounterProject.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class DailyProductIntakeController : ControllerBase
@@ -44,6 +44,12 @@ namespace CalorieCounterProject.API.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> SearchByUserAndDate(DateAndUserIdDto dateAndUserIdDto)
+        {
+            var dailyActivities = await _dailyProductIntakeService.SearchByUserAndDate(dateAndUserIdDto);
+            return Ok(_mapper.Map<IEnumerable<DailyCalorieIntakeDto>>(dailyActivities));
+        }
 
 
 

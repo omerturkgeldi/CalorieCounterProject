@@ -53,5 +53,76 @@ namespace CalorieCounterProject.Data.Repositories
             return mylist;
 
         }
+
+        public async Task<List<DailyCalorieIntakeDto>> SearchByUserAndDate(DateAndUserIdDto dateAndUserIdDto)
+        {
+            var productIntakes = await (from dpi in _appDbContext.DailyProductIntakes
+                                        join prd in _appDbContext.Products on dpi.ProductId equals prd.ProductId
+                                        where dpi.Date.Date == dateAndUserIdDto.Date.Date
+                                        where dpi.UserId.ToString() == dateAndUserIdDto.Id
+                                        select new { dpi.Id, dpi.ProductId, dpi.UserId, dpi.PortionSize, dpi.Date, dpi.IntakeType, prd.Kcal, prd.Fat, prd.Protein, prd.BarcodeNo, prd.ProductName, prd.Carb }).ToListAsync();
+
+
+            var foodIntakes = await (from dfi in _appDbContext.DailyFoodIntakes
+                                     join foods in _appDbContext.Foods on dfi.FoodId equals foods.FoodId
+                                     where dfi.Date.Date == dateAndUserIdDto.Date.Date
+                                     where dfi.UserId.ToString() == dateAndUserIdDto.Id
+                                     select new { dfi.Id, dfi.FoodId, dfi.UserId, dfi.PortionSize, dfi.Date, dfi.IntakeType, foods.Kcal, foods.Fat, foods.Protein, foods.FoodName, foods.Carb }).ToListAsync();
+
+
+
+
+            List<DailyCalorieIntakeDto> dailyCalorieIntakesList = new List<DailyCalorieIntakeDto>();
+
+            foreach (var item in productIntakes)
+            {
+
+                DailyCalorieIntakeDto dailyCalorieIntakeDto = new DailyCalorieIntakeDto
+                {
+                    Id = item.Id,
+                    Carb = item.Carb,
+                    Date = item.Date,
+                    Fat = item.Fat,
+                    IntakeType = item.IntakeType,
+                    Kcal = item.Kcal,
+                    Name = item.ProductName,
+                    PortionSize = item.PortionSize,
+                    Protein = item.Protein,
+                    Type = true,
+                    UserId = item.UserId,
+                    BarcodeNo = item.BarcodeNo
+                };
+
+                dailyCalorieIntakesList.Add(dailyCalorieIntakeDto);
+            }
+
+
+
+            foreach (var item in foodIntakes)
+            {
+
+                DailyCalorieIntakeDto dailyCalorieIntakeDto = new DailyCalorieIntakeDto
+                {
+                    Id = item.Id,
+                    Carb = item.Carb,
+                    Date = item.Date,
+                    Fat = item.Fat,
+                    IntakeType = item.IntakeType,
+                    Kcal = item.Kcal,
+                    Name = item.FoodName,
+                    PortionSize = item.PortionSize,
+                    Protein = item.Protein,
+                    Type = false,
+                    UserId = item.UserId,
+                    BarcodeNo = ""
+                };
+
+                dailyCalorieIntakesList.Add(dailyCalorieIntakeDto);
+            }
+
+            return dailyCalorieIntakesList;
+
+
+        }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using CalorieCounterProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CalorieCounterProject.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220104211456_intake-type-eklendi")]
+    partial class intaketypeeklendi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,9 +55,6 @@ namespace CalorieCounterProject.Data.Migrations
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("Minutes")
-                        .HasColumnType("integer");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -173,9 +172,6 @@ namespace CalorieCounterProject.Data.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("FoodId");
-
-                    b.HasIndex("UrlName")
-                        .IsUnique();
 
                     b.ToTable("Foods");
                 });
@@ -365,9 +361,6 @@ namespace CalorieCounterProject.Data.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
-
-                    b.Property<float>("Weight")
-                        .HasColumnType("real");
 
                     b.HasKey("Id");
 

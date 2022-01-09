@@ -15,6 +15,9 @@ namespace CalorieCounterProject.Core.DTOs
         public int ActivityId { get; set; }
 
         [Required(ErrorMessage = "{0} alanı gereklidir")]
+        public int Minutes { get; set; }
+
+        [Required(ErrorMessage = "{0} alanı gereklidir")]
         public Guid UserId { get; set; }
 
         public DateTime Date { get; set; }

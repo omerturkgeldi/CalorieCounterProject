@@ -1,4 +1,5 @@
-﻿using CalorieCounterProject.Core.Models;
+﻿using CalorieCounterProject.Core.DTOs;
+using CalorieCounterProject.Core.Models;
 using CalorieCounterProject.Core.Repositories;
 using CalorieCounterProject.Core.Services;
 using CalorieCounterProject.Core.UnitOfWorks;
@@ -16,5 +17,9 @@ namespace CalorieCounterProject.Service.Services
         {
         }
 
+        public async Task<List<ActivityDto>> SearchByActivityName(string name)
+        {
+            return await _unitOfWork.Activities.SearchByActivityName(name);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CalorieCounterProject.Core.Models;
+﻿using CalorieCounterProject.Core.DTOs;
+using CalorieCounterProject.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,9 @@ namespace CalorieCounterProject.Core.Repositories
 {
     public interface IDailyActivityRepository : IRepository<DailyActivity>
     {
+        Task<DailyActivity> AddNewAsync(DailyActivity dailyActivity);
+
+        Task<List<DailyActivityClientDto>> SearchByUserAndDate(DateAndUserIdDto dateAndUserIdDto);
+
     }
 }

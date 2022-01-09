@@ -20,6 +20,9 @@ namespace CalorieCounterProject.Core.DTOs
 
         [Required(ErrorMessage = "{0} alanı gereklidir")]
         public int RelationshipTypeId { get; set; }
+        
+        public DateTime DateAdded { get; set; }
+
 
 
     }

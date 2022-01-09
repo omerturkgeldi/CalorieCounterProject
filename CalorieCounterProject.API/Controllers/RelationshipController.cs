@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CalorieCounterProject.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class RelationshipController : ControllerBase

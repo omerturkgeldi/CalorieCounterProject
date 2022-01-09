@@ -46,12 +46,20 @@ namespace CalorieCounterProject.API.Controllers
 
         //[ServiceFilter(typeof(GenericNotFoundFilter<Food>))]
         //TODO: name ile sorgular için GenericNotFoundFilter yaz.
-        [HttpGet("{name}")]
+        [HttpGet("name/{name}")]
         public async Task<IActionResult> GetByNameAsync(string name)
         {
             var food = await _foodService.GetByNameAsync(name);
             return Ok(_mapper.Map<FoodDto>(food));
         }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchByName(string name)
+        {
+            var allFoods = await _foodService.SearchByName(name);
+            return Ok(_mapper.Map<IEnumerable<AllFoodsAndProductsDto>>(allFoods));
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> Save(FoodDto foodDto)

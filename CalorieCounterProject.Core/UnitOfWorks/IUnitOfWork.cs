@@ -14,6 +14,15 @@ namespace CalorieCounterProject.Core.UnitOfWorks
         IActivityRepository Activities { get; }
         IRelationshipRepository Relationships { get; }
         IDailyProductIntakeRepository DailyProductIntakes { get; }
+        //IDailyFoodIntakeRepository DailyFoodIntakes { get; }
+        IDailyStepRepository DailySteps { get; }
+        IDailyActivityRepository DailyActivities { get; }
+        //IUserGroupRepository UserGroups { get; }
+        //IGroupRepository Groups { get; }
+        //IRelationshipTypeRepository RelationshipTypes { get; }
+
+
+
 
         Task CommitAsync();
         void Commit();
