@@ -12,7 +12,7 @@ namespace CalorieCounterProject.Core.Repositories
     {
 
         Task<RelationshipWithTypeDto> GetWithRelationshipTypeAsync(int relationshipId);
-
-
+        Task<Relationship> AddNewAsync(Relationship relationship);
+        Task<List<FriendDto>> SearchUsersFriends(string userId);
     }
 }

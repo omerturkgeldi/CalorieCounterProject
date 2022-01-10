@@ -9,5 +9,7 @@ namespace CalorieCounterProject.Core.Repositories
 {
     public interface IGroupRepository : IRepository<Group>
     {
+
+        Task<Group> AddNewAsync(Group group);
     }
 }

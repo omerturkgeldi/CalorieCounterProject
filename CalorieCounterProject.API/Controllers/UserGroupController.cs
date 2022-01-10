@@ -48,7 +48,7 @@ namespace CalorieCounterProject.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(UserGroupDto userGroupDto)
         {
-            var userGroup = await _userGroupService.AddAsync(_mapper.Map<UserGroup>(userGroupDto));
+            var userGroup = await _userGroupService.AddNewAsync(_mapper.Map<UserGroup>(userGroupDto));
             return Created(string.Empty, _mapper.Map<UserGroupDto>(userGroup));
         }
 

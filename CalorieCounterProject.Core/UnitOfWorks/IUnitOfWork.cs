@@ -17,7 +17,8 @@ namespace CalorieCounterProject.Core.UnitOfWorks
         //IDailyFoodIntakeRepository DailyFoodIntakes { get; }
         IDailyStepRepository DailySteps { get; }
         IDailyActivityRepository DailyActivities { get; }
-        //IUserGroupRepository UserGroups { get; }
+        IUserGroupRepository UserGroups { get; }
+        IGroupRepository Groups { get; }
         //IGroupRepository Groups { get; }
         //IRelationshipTypeRepository RelationshipTypes { get; }
 

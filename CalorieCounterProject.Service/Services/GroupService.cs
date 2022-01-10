@@ -16,6 +16,14 @@ namespace CalorieCounterProject.Service.Services
         {
         }
 
+        public async Task<Group> AddNewAsync(Group group)
+        {
+            group.CreatedAt = DateTime.UtcNow;
+            await _unitOfWork.Groups.AddAsync(group);
+            await _unitOfWork.CommitAsync();
+            return group;
+        }
+     
     }
 
 }

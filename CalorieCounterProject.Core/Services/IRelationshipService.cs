@@ -10,7 +10,7 @@ namespace CalorieCounterProject.Core.Services
     public interface  IRelationshipService : IService<Relationship>
     {
         Task<RelationshipWithTypeDto> GetWithRelationshipTypeAsync(int relationshipId);
-    
-    
+        Task<Relationship> AddNewAsync(Relationship relationship);
+        Task<List<FriendDto>> SearchUsersFriends(string userId);
     }
 }

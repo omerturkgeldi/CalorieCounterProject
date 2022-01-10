@@ -9,5 +9,7 @@ namespace CalorieCounterProject.Core.Repositories
 {
     public interface IUserGroupRepository : IRepository<UserGroup>
     {
+        Task<UserGroup> AddNewAsync(UserGroup userGroup);
+
     }
 }

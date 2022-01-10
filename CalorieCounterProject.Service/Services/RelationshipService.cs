@@ -17,9 +17,22 @@ namespace CalorieCounterProject.Service.Services
         {
         }
 
+        public async Task<Relationship> AddNewAsync(Relationship relationship)
+        {
+            relationship.CreatedAt = DateTime.UtcNow;
+            await _unitOfWork.Relationships.AddAsync(relationship);
+            await _unitOfWork.CommitAsync();
+            return relationship;
+        }
+
         public async Task<RelationshipWithTypeDto> GetWithRelationshipTypeAsync(int relationship)
         {
             return await _unitOfWork.Relationships.GetWithRelationshipTypeAsync(relationship);
+        }
+
+        public async Task<List<FriendDto>> SearchUsersFriends(string userId)
+        {
+            return await _unitOfWork.Relationships.SearchUsersFriends(userId);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace CalorieCounterProject.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(RelationshipDto relationshipDto)
         {
-            var newRelationship = await _relationshipService.AddAsync(_mapper.Map<Relationship>(relationshipDto));
+            var newRelationship = await _relationshipService.AddNewAsync(_mapper.Map<Relationship>(relationshipDto));
             return Created(string.Empty, _mapper.Map<RelationshipDto>(newRelationship));
         }
 
@@ -69,7 +69,12 @@ namespace CalorieCounterProject.API.Controllers
         }
 
 
-
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchUsersFriends(string userId)
+        {
+            var allFriends = await _relationshipService.SearchUsersFriends(userId);
+            return Ok(_mapper.Map<IEnumerable<FriendDto>>(allFriends));
+        }
 
 
 

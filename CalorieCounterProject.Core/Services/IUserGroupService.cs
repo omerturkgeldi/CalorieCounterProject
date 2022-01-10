@@ -9,5 +9,6 @@ namespace CalorieCounterProject.Core.Services
 {
     public interface IUserGroupService : IService<UserGroup>
     {
+        Task<UserGroup> AddNewAsync(UserGroup userGroup);
     }
 }
